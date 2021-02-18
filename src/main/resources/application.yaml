@@ -1,0 +1,8 @@
+#  thymeleaf Configuration
+thymeleaf:
+prefix: classpath:/templates/
+suffix: .html
+
+#   Server port
+server:
+  port: 5555
