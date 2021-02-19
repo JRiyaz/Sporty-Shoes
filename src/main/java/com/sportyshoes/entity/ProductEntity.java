@@ -48,10 +48,6 @@ public class ProductEntity implements Serializable {
     @Lob
     private Byte[] image;
 
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = OrderEntity.class)
-    @JoinColumn(name = "order_id")
-    private OrderEntity order;
-
     public ProductEntity(String name, String styleName, String color, Integer inStockPieces,
                          Integer soldPieces, String suitableFor, String type, String material,
                          Double price, String description, Byte[] image) {
