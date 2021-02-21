@@ -1,0 +1,43 @@
+
+      .carousel-caption {
+        top: 24rem;
+      }
+      a.d-block > img {
+        height: 50vh;
+      }
+      #carouselExampleCaptions {
+        max-height: 550px;
+      }
+      .carousel-item > img {
+        height: 600px;
+      }
+      .navbar-nav .dropdown-menu {
+        position: absolute;
+        float: none;
+      }
+      nav .nav-item {
+        list-style: none;
+      }
+      .dropdown {
+        position: relative;
+        top: 15%;
+      }
+      .dropdown-menu .dropdown-item:hover {
+        color: blue;
+        background-color: black;
+      }
+      .btn-secondary {
+        color: #f8f9fa;
+        background-color: #343a40;
+        border: none;
+        outline: none;
+        /* border-color: #f8f9fa; */
+      }
+      .btn-secondary:hover,
+      .btn-secondary:focus,
+      .btn-secondary:active {
+        color: #f8f9fa;
+        background-color: #343a40;
+        border: none;
+        outline: none;
+      }

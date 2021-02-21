@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:layout="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.w3.org/1999/xhtml"
+>
+<head>
+    <meta charset="UTF-8" />
+    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">Header</title>
+
+    <!-- Bootstrap core CSS -->
+    <link
+            th:rel="stylesheet"
+            th:href="@{webjars/bootstrap/4.6.0/css/bootstrap.min.css} "
+    />
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/assets/bootstrap/css/dashboard.css}" rel="stylesheet" />
+</head>
+<body>
+<!--Wrapper Starts here-->
+<div id="wrapper">
+    <!--    Nav-Bar starts here -->
+    <nav
+            th:fragment="nav"
+            class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
+    >
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"
+        >Company name</a
+        >
+        <ul class="navbar-nav list-group-horizontal">
+            <li class="nav-item">
+                <a class="nav-link m-2" href="/men">Men</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link m-2" href="/women">Women</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link m-2" href="/kids">Kids</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link m-2" href="/brand">Brand</a>
+            </li>
+        </ul>
+        <input
+                class="form-control form-control-dark col-4"
+                type="text"
+                placeholder="Search"
+                aria-label="Search"
+        />
+        <ul class="navbar-nav list-group-horizontal px-5">
+            <li class="nav-item">
+                <a class="nav-link m-2" href="#">Sign In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link m-2" href="#">Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown">
+                    <button
+                            class="btn btn-secondary dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                    >
+                        User
+                    </button>
+                    <div
+                            class="dropdown-menu bg-dark"
+                            aria-labelledby="dropdownMenuButton"
+                    >
+                        <a class="dropdown-item text-white" href="#">Sign-Out</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!--    Nav-Bar ends here-->
+</div>
+<!--Wrapper ends here-->
+
+<!-- Optional Section -->
+<th:block layout:fragment="script" />
+
+<th:block th:fragment="script">
+    <!--jQuery JS dependency-->
+    <script th:href="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <!--Bootstrap JS dependency-->
+    <script
+            th:href="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"
+    ></script>
+</th:block>
+</body>
+</html>

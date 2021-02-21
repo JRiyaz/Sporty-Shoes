@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:layout="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.w3.org/1999/xhtml"
+>
+<head>
+    <meta charset="UTF-8" />
+    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">
+        Side Nav
+    </title>
+</head>
+<body>
+<!--Wrapper Starts here-->
+<div id="wrapper">
+    <!--Content Starts here-->
+    <div class="container-fluid">
+        <div class="row">
+            <aside
+                    th:fragment="aside"
+                    id="sidebarMenu"
+                    class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse show"
+            >
+                <div class="sidebar-sticky pt-3 mx-3">
+                    <h6
+                            id="men"
+                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"
+                    >
+                        <span>Men Shoes</span>
+                        <a
+                                class="d-flex align-items-center text-muted active"
+                                href="#"
+                                aria-label="Add a new report"
+                        >
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="feather feather-plus-circle"
+                            >
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="16"></line>
+                                <line x1="8" y1="12" x2="16" y2="12"></line>
+                            </svg>
+                        </a>
+                    </h6>
+                    <ul id="men-list" class="nav flex-column mx-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">All </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Running </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Hiking </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Workout </a>
+                        </li>
+                    </ul>
+                    <h6
+                            id="women"
+                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"
+                    >
+                        <span>Women Shoes</span>
+                        <a
+                                class="d-flex align-items-center text-muted"
+                                href="#"
+                                aria-label="Add a new report"
+                        >
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="feather feather-plus-circle"
+                            >
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="16"></line>
+                                <line x1="8" y1="12" x2="16" y2="12"></line>
+                            </svg>
+                        </a>
+                    </h6>
+                    <ul id="women-list" class="nav flex-column mx-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">All </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Running </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Hiking </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Workout </a>
+                        </li>
+                    </ul>
+                    <h6
+                            id="kids"
+                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"
+                    >
+                        <span>Kids Shoes</span>
+                        <a
+                                class="d-flex align-items-center text-muted"
+                                href="#"
+                                aria-label="Add a new report"
+                        >
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="feather feather-plus-circle"
+                            >
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="16"></line>
+                                <line x1="8" y1="12" x2="16" y2="12"></line>
+                            </svg>
+                        </a>
+                    </h6>
+                    <ul id="kids-list" class="nav flex-column mx-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">All </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Running </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Hiking </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Workout </a>
+                        </li>
+                    </ul>
+                    <h6
+                            id="brand"
+                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"
+                    >
+                        <span>Brand</span>
+                        <a
+                                class="d-flex align-items-center text-muted"
+                                href="#"
+                                aria-label="Add a new report"
+                        >
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="feather feather-plus-circle"
+                            >
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="16"></line>
+                                <line x1="8" y1="12" x2="16" y2="12"></line>
+                            </svg>
+                        </a>
+                    </h6>
+                    <ul id="brand-list" class="nav flex-column mx-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Adidas </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Nike </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Puma </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">skechers </a>
+                        </li>
+                    </ul>
+
+                    <!-- Admin Options -->
+                    <h6
+                            id="admin"
+                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"
+                    >
+                        <span>Admin View</span>
+                        <a
+                                class="d-flex align-items-center text-muted"
+                                href="#"
+                                aria-label="Add a new report"
+                        >
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="feather feather-plus-circle"
+                            >
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="16"></line>
+                                <line x1="8" y1="12" x2="16" y2="12"></line>
+                            </svg>
+                        </a>
+                    </h6>
+                    <ul id="admin-list" class="nav flex-column mx-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Add Stock </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Update Stock </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">View Orders </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">View Users </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            Main content goes here
+        </main>
+    </div>
+    <!--    Content ends here-->
+</div>
+<!--Wrapper ends here-->
+</body>
+</html>

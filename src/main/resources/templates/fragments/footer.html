@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:layout="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.w3.org/1999/xhtml"
+>
+<head>
+    <meta charset="UTF-8" />
+    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">Footer</title>
+</head>
+<body>
+<!--Wrapper Starts here-->
+<div id="wrapper">
+    <!--    Footer Starts here-->
+    <footer
+            th:fragment="footer"
+            class="mastfoot text-center mx-auto my-2 py-4 bg-dark text-white"
+    >
+        <div class="inner">
+            <h6 class="">
+                Designed & Developed by:
+                <strong class="text-muted">
+                    <a href="#" class="text-white">Riyaz J</a>
+                </strong>
+            </h6>
+        </div>
+    </footer>
+    <!--    Footer ends here-->
+</div>
+</body>
+</html>
