@@ -11,11 +11,8 @@
     <!-- Bootstrap core CSS -->
     <link
             th:rel="stylesheet"
-            th:href="@{webjars/bootstrap/4.6.0/css/bootstrap.min.css} "
+            th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css} "
     />
-
-    <!-- Custom styles for this template -->
-    <link th:href="@{/assets/bootstrap/css/dashboard.css}" rel="stylesheet" />
 </head>
 <body>
 <!--Wrapper Starts here-->
@@ -25,8 +22,8 @@
             th:fragment="nav"
             class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
     >
-        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"
-        >Company name</a
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/"
+        >Sporty Shoes</a
         >
         <ul class="navbar-nav list-group-horizontal">
             <li class="nav-item">
@@ -50,10 +47,10 @@
         />
         <ul class="navbar-nav list-group-horizontal px-5">
             <li class="nav-item">
-                <a class="nav-link m-2" href="#">Sign In</a>
+                <a class="nav-link m-2" href="/user/sign-in">Sign In</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link m-2" href="#">Sign Up</a>
+                <a class="nav-link m-2" href="/user/sign-up">Sign Up</a>
             </li>
             <li class="nav-item">
                 <div class="dropdown">
@@ -71,7 +68,9 @@
                             class="dropdown-menu bg-dark"
                             aria-labelledby="dropdownMenuButton"
                     >
-                        <a class="dropdown-item text-white" href="#">Sign-Out</a>
+                        <a class="dropdown-item text-white" href="/user/sign-out"
+                        >Sign-Out</a
+                        >
                     </div>
                 </div>
             </li>
@@ -80,9 +79,6 @@
     <!--    Nav-Bar ends here-->
 </div>
 <!--Wrapper ends here-->
-
-<!-- Optional Section -->
-<th:block layout:fragment="script" />
 
 <th:block th:fragment="script">
     <!--jQuery JS dependency-->
