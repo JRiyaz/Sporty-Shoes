@@ -6,6 +6,15 @@ $(document).ready(function () {
   else if (url.endsWith("sign-in"))
     document.getElementById("sign-in").addClass = "active";
 
+  if (url.endsWith("user/all")) {
+      let admin = document.getElementById("admin");
+      admin.addClass = "active";
+      admin.childNodes.item('a').addClass = "active";
+      document.getElementById("men-list").childNodes.item("li").addClass = "active";
+      }
+    else if (url.endsWith("sign-in"))
+      document.getElementById("sign-in").addClass = "active";
+
   if (url.includes("?login-successful"))
     toast("Login Successful", "text-success", "border-success");
   else if (url.includes("?logout-successful"))

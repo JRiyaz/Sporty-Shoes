@@ -40,6 +40,12 @@ nav .nav-item {
   border: none;
   outline: none;
 }
+.active {
+color: #007bff!important
+}
+aside#sidebarMenu {
+    position: initial!important;
+}
 footer {
     background-color: #343a40!important;
 }

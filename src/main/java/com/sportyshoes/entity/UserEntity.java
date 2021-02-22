@@ -5,10 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -30,6 +32,7 @@ public class UserEntity implements Serializable {
     @Column(nullable = false, length = 100, unique = true, name = "email")
     @Email(message = "{user.email.invalid}")
     @NotEmpty(message = "Please enter email")
+    @UniqueElements(message = "Email ID already exists")
     private String email;
 
     @NotEmpty(message = "Please select your Gender")
@@ -62,6 +65,10 @@ public class UserEntity implements Serializable {
     @Column(name = "user_role", length = 50)
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
+
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = OrderEntity.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private List<OrderEntity> orderEntities;
 
     public UserEntity(String name, String email, String gender, String password, String address, String city, String state, String zipcode, Boolean terms, UserRole userRole) {
         this.name = name;

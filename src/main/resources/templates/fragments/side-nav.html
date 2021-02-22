@@ -19,16 +19,16 @@
             <aside
                     th:fragment="aside"
                     id="sidebarMenu"
-                    class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse show"
+                    class="col-md-3 col-lg-2 d-md-block bg-light py-0 sidebar collapse show"
             >
-                <div class="sidebar-sticky pt-3 mx-3">
+                <div class="sidebar-sticky py-0 mx-3">
                     <h6
                             id="men"
                             class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"
                     >
                         <span>Men Shoes</span>
                         <a
-                                class="d-flex align-items-center text-muted active"
+                                class="d-flex align-items-center text-muted"
                                 href="#"
                                 aria-label="Add a new report"
                         >
@@ -52,16 +52,16 @@
                     </h6>
                     <ul id="men-list" class="nav flex-column mx-4">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">All </a>
+                            <a class="nav-link" href="/men/all">All </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Running </a>
+                            <a class="nav-link" href="/men/running">Running </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Hiking </a>
+                            <a class="nav-link" href="/men/hiking">Hiking </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Workout </a>
+                            <a class="nav-link" href="/men/workout">Workout </a>
                         </li>
                     </ul>
                     <h6
@@ -94,16 +94,16 @@
                     </h6>
                     <ul id="women-list" class="nav flex-column mx-4">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">All </a>
+                            <a class="nav-link" href="/women/all">All </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Running </a>
+                            <a class="nav-link" href="/women/running">Running </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Hiking </a>
+                            <a class="nav-link" href="/women/hiking">Hiking </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Workout </a>
+                            <a class="nav-link" href="/women/workout">Workout </a>
                         </li>
                     </ul>
                     <h6
@@ -136,16 +136,7 @@
                     </h6>
                     <ul id="kids-list" class="nav flex-column mx-4">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">All </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Running </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Hiking </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Workout </a>
+                            <a class="nav-link" href="/kids/all">All </a>
                         </li>
                     </ul>
                     <h6
@@ -178,16 +169,19 @@
                     </h6>
                     <ul id="brand-list" class="nav flex-column mx-4">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Adidas </a>
+                            <a class="nav-link" href="/brand/all">All </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nike </a>
+                            <a class="nav-link" href="/brand/adidas">Adidas </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Puma </a>
+                            <a class="nav-link" href="/brand/nike">Nike </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">skechers </a>
+                            <a class="nav-link" href="/brand/puma">Puma </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/brand/reebok">Reebok </a>
                         </li>
                     </ul>
 
@@ -222,16 +216,16 @@
                     </h6>
                     <ul id="admin-list" class="nav flex-column mx-4">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Add Stock </a>
+                            <a class="nav-link" href="/user/all">All Users </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Update Stock </a>
+                            <a class="nav-link" href="/user/add-stock">Add Stock </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">View Orders </a>
+                            <a class="nav-link" href="/user/view-orders">View Orders </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">View Users </a>
+                            <a class="nav-link" href="/user/view-stock">View Stock </a>
                         </li>
                     </ul>
                 </div>
