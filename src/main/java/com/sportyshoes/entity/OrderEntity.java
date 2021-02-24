@@ -27,9 +27,12 @@ public class OrderEntity implements Serializable {
     @Column(name = "bill_paid")
     private Boolean billPaid;
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = ProductEntity.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = ProductEntity.class, fetch = FetchType.LAZY, mappedBy = "orderEntity")
     private List<ProductEntity> products;
+
+    @ManyToOne(cascade = CascadeType.ALL, targetEntity = UserEntity.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserEntity userEntity;
 
     public OrderEntity(Double billAmount, Boolean billPaid, List<ProductEntity> products) {
         this.billAmount = billAmount;

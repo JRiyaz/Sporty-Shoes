@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Add Stock | Sports Shoes</title>
+
+    <!-- Bootstrap core CSS -->
+    <link
+            th:rel="stylesheet"
+            th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css} "
+    />
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/assets/bootstrap/css/dashboard.css}" rel="stylesheet" />
+
+    <!--    File Upload style-->
+    <link rel="stylesheet" th:href="@{/css/file-upload.css}" />
+
+    <!--Custom Style-->
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<!--Nav-Bar Starts-->
+<th:block th:replace="fragments/header :: nav"></th:block>
+<!--Nav-Bar Ends-->
+
+<div class="container-fluid">
+    <div class="row">
+        <!--Side Nav Starts-->
+        <th:block th:replace="fragments/side-nav :: aside"></th:block>
+        <!--Side Nav Ends-->
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 mb-auto">
+            <!--            Content heading starts-->
+            <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+            >
+                <h1 class="h2">Add Stock</h1>
+            </div>
+            <!--            Content heading ends-->
+
+            <!-- Form Starts -->
+            <section
+                    id="form-section"
+                    class="inner cover my-5 col-sm-12 col-lg-10 mx-auto"
+                    role="main"
+            >
+                <form
+                        th:action="@{/product/add-stock}"
+                        th:object="${productEntity}"
+                        method="POST"
+                        class="needs-validation form-signin"
+                        novalidate
+                >
+                    <div
+                            class="row justify-content-between align-items-center mx-sm-2 mb-3"
+                    >
+                        <!-- File Upload start -->
+                        <div class="col-sm-9 col-lg-5 mx-auto mb-sm-3">
+                            <div class="file-modal shadow rounded py-5">
+                                <div class="shadow" id="profile">
+                                    <div class="dashes"></div>
+                                    <label>Click to browse or drag an image here</label>
+                                </div>
+                                <div class="editable text-center">
+                                    <h5 class="mt-5 opacity-5" contenteditable>
+                                        Product Image
+                                    </h5>
+                                </div>
+                            </div>
+                            <input
+                                    id="mediaFile"
+                                    th:field="*{image}"
+                                    required
+                                    autofocus
+                                    type="file"
+                            />
+                            <div
+                                    th:if="${#fields.hasErrors('image')}"
+                                    th:errors="*{image}"
+                                    class="is-invalid text-center"
+                            >
+                                Please provide your Name.
+                            </div>
+                        </div>
+                        <!-- File Upload Ends -->
+
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="form-floating mb-2">
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="shoe12"
+                                        id="product-name"
+                                        th:field="*{name}"
+                                        required
+                                        autofocus
+                                        minlength="3"
+                                />
+                                <label for="product-name">Product Name</label>
+                                <div
+                                        th:if="${#fields.hasErrors('name')}"
+                                        th:errors="*{name}"
+                                        class="is-invalid"
+                                >
+                                    Please provide your Name.
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="style123"
+                                        id="style-name"
+                                        th:field="*{styleName}"
+                                        required
+                                        autofocus
+                                        minlength="3"
+                                        list="style-names"
+                                />
+                                <label for="style-name">Style Name</label>
+                                <datalist id="style-names">
+                                    <option value="Boston"></option>
+                                    <option value="Cambridge"></option>
+                                </datalist>
+
+                                <div
+                                        th:if="${#fields.hasErrors('styleName')}"
+                                        th:errors="*{styleName}"
+                                        class="is-invalid"
+                                >
+                                    Please provide your Name.
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Adidas"
+                                        id="brand"
+                                        th:field="*{brand}"
+                                        required
+                                        autofocus
+                                        minlength="3"
+                                        list="brands"
+                                />
+                                <datalist id="brands">
+                                    <option value="Adidas">Adidas</option>
+                                    <option value="Nike">Nike</option>
+                                    <option value="Puma">Puma</option>
+                                    <option value="Reebok">Reebok</option>
+                                </datalist>
+                                <label for="brand">Brand</label>
+                                <div
+                                        th:if="${#fields.hasErrors('brand')}"
+                                        th:errors="*{brand}"
+                                        class="is-invalid"
+                                >
+                                    Please provide your Name.
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="White and Black"
+                                        id="color"
+                                        th:field="*{color}"
+                                        required
+                                        autofocus
+                                        minlength="3"
+                                />
+                                <label for="color">Color</label>
+                                <div
+                                        th:if="${#fields.hasErrors('color')}"
+                                        th:errors="*{color}"
+                                        class="is-invalid"
+                                >
+                                    Please provide your Name.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between mx-sm-2 mb-3">
+                        <div class="form-floating col-sm-12 col-lg-6 mb-2">
+                            <select
+                                    class="form-select"
+                                    id="suitable-for"
+                                    th:field="*{suitableFor}"
+                                    required
+                                    autofocus
+                            >
+                                <option value="Men" selected>Men</option>
+                                <option value="Women">Women</option>
+                                <option value="Kid">Kid</option>
+                            </select>
+                            <label for="suitable-for">Suitable For</label>
+                            <div
+                                    th:if="${#fields.hasErrors('suitableFor')}"
+                                    th:errors="*{suitableFor}"
+                                    class="is-invalid"
+                            >
+                                Please provide your Name.
+                            </div>
+                        </div>
+
+                        <div class="form-floating col-sm-12 col-lg-6 mb-2">
+                            <select
+                                    class="form-select"
+                                    id="type"
+                                    th:field="*{type}"
+                                    required
+                                    autofocus
+                            >
+                                <option value="Running" selected>Running</option>
+                                <option value="Workout">Workout</option>
+                                <option value="Hiking">Hiking</option>
+                            </select>
+                            <label for="type">Type</label>
+                            <div
+                                    th:if="${#fields.hasErrors('type')}"
+                                    th:errors="*{type}"
+                                    class="is-invalid"
+                            >
+                                Please provide your Name.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between mx-sm-2 mb-3">
+                        <div class="col-sm-12 col-lg-6 form-floating mb-2">
+                            <input
+                                    type="number"
+                                    class="form-control"
+                                    placeholder="5"
+                                    id="pieces"
+                                    th:field="*{stock}"
+                                    required
+                                    autofocus
+                                    min="1"
+                            />
+                            <label for="pieces">No.of Products</label>
+                            <div
+                                    th:if="${#fields.hasErrors('stock')}"
+                                    th:errors="*{stock}"
+                                    class="is-invalid"
+                            >
+                                Please provide your Name.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 form-floating mb-2">
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="1000.0"
+                                    id="price"
+                                    th:field="*{price}"
+                                    required
+                                    autofocus
+                                    minlength="3"
+                            />
+                            <label for="price">Price</label>
+                            <div
+                                    th:if="${#fields.hasErrors('price')}"
+                                    th:errors="*{price}"
+                                    class="is-invalid"
+                            >
+                                Please provide your Name.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between mx-sm-2 mb-3">
+                        <div class="col-12 form-floating">
+                  <textarea
+                          class="form-control"
+                          id="observation"
+                          rows="3"
+                          style="height: 100px"
+                          th:field="*{description}"
+                          required
+                          autofocus
+                          minlength="3"
+                  ></textarea>
+                            <label class="observation" for="observation"
+                            >A few words about the product...</label
+                            >
+                            <div
+                                    th:if="${#fields.hasErrors('description')}"
+                                    th:errors="*{description}"
+                                    class="is-invalid"
+                            >
+                                Please provide your Name.
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                            class="card-footer justify-content-center p-0 border-0 text-center bg-white mb-3"
+                    >
+                        <button
+                                class="btn btn-block lead my-2 text-white"
+                                type="submit"
+                        >
+                            Add Stock
+                        </button>
+                    </div>
+                </form>
+            </section>
+            <!-- Form Ends -->
+        </main>
+    </div>
+</div>
+
+<!--Footer Starts-->
+<th:block th:replace="fragments/footer :: footer"></th:block>
+<!--Footer Ends-->
+
+<!--jQuery JS dependency-->
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+
+<!--Bootstrap JS dependency-->
+<script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+<!--File Upload JS dependency-->
+<script th:src="@{/js/file-upload.js}"></script>
+
+<!--Custom JS-->
+<script th:src="@{/js/script.js}"></script>
+<script>
+      $(document).ready(function () {
+        $("#example").DataTable();
+      });
+    </script>
+</body>
+</html>

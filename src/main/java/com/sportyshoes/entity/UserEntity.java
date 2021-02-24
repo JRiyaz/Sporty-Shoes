@@ -66,8 +66,7 @@ public class UserEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = OrderEntity.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = OrderEntity.class, fetch = FetchType.LAZY, mappedBy = "userEntity")
     private List<OrderEntity> orderEntities;
 
     public UserEntity(String name, String email, String gender, String password, String address, String city, String state, String zipcode, Boolean terms, UserRole userRole) {
