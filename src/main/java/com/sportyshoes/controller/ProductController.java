@@ -2,6 +2,7 @@ package com.sportyshoes.controller;
 
 import com.sportyshoes.entity.ProductEntity;
 import com.sportyshoes.service.ProductService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,13 +21,22 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping("add-stock")
+    @GetMapping("all")
+    public String findAll(Model model) {
+
+        final List<ProductEntity> products = productService.findAll();
+
+        model.addAttribute("products", products);
+        return "view-stock";
+    }
+
+    @GetMapping("add")
     public String addStock(ProductEntity productEntity) {
 
         return "add-stock";
     }
 
-    @PostMapping("add-stock")
+    @PostMapping("add")
     public String addStock(@Valid ProductEntity productEntity, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors())
@@ -34,14 +44,5 @@ public class ProductController {
 
         productService.save(productEntity);
         return "redirect:view-stock?add-stock=true";
-    }
-
-    @GetMapping("view-stock")
-    public String viewStock(Model model) {
-
-        final List<ProductEntity> products = productService.findAll();
-
-        model.addAttribute("products", products);
-        return "view-stock";
     }
 }
