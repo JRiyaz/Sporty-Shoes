@@ -3,6 +3,7 @@ package com.sportyshoes.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ import java.util.Base64;
 @Entity
 @Table(name = "products")
 @DynamicUpdate
+@DynamicInsert
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

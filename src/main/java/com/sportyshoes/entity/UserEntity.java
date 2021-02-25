@@ -4,6 +4,7 @@ import com.sportyshoes.model.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.UniqueElements;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @DynamicUpdate
+@DynamicInsert
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

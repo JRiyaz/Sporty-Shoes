@@ -45,7 +45,7 @@
                     role="main"
             >
                 <form
-                        th:action="@{/product/add-stock}"
+                        th:action="@{/product/add}"
                         th:object="${productEntity}"
                         method="POST"
                         class="needs-validation form-signin"
@@ -120,8 +120,12 @@
                                 />
                                 <label for="style-name">Style Name</label>
                                 <datalist id="style-names">
-                                    <option value="Boston"></option>
-                                    <option value="Cambridge"></option>
+                                    <option
+                                            th:each="style : ${styles}"
+                                            th:value="${style}"
+                                            th:text="${style}"
+                                            th:selected="${style == 'cricket-126'}"
+                                    ></option>
                                 </datalist>
 
                                 <div
@@ -146,10 +150,12 @@
                                         list="brands"
                                 />
                                 <datalist id="brands">
-                                    <option value="Adidas">Adidas</option>
-                                    <option value="Nike">Nike</option>
-                                    <option value="Puma">Puma</option>
-                                    <option value="Reebok">Reebok</option>
+                                    <option
+                                            th:each="brand : ${brands}"
+                                            th:value="${brand}"
+                                            th:text="${brand}"
+                                            th:selected="${brand == 'Adidas'}"
+                                    ></option>
                                 </datalist>
                                 <label for="brand">Brand</label>
                                 <div
@@ -171,7 +177,16 @@
                                         required
                                         autofocus
                                         minlength="3"
+                                        list="colors"
                                 />
+                                <datalist id="colors">
+                                    <option
+                                            th:each="color : ${colors}"
+                                            th:value="${color}"
+                                            th:text="${color}"
+                                            th:selected="${color == 'White'}"
+                                    ></option>
+                                </datalist>
                                 <label for="color">Color</label>
                                 <div
                                         th:if="${#fields.hasErrors('color')}"
@@ -193,9 +208,12 @@
                                     required
                                     autofocus
                             >
-                                <option value="Men" selected>Men</option>
-                                <option value="Women">Women</option>
-                                <option value="Kid">Kid</option>
+                                <option
+                                        th:each="for : ${suitableFor}"
+                                        th:value="${for}"
+                                        th:text="${for}"
+                                        th:selected="${for == 'Male'}"
+                                ></option>
                             </select>
                             <label for="suitable-for">Suitable For</label>
                             <div
@@ -215,9 +233,12 @@
                                     required
                                     autofocus
                             >
-                                <option value="Running" selected>Running</option>
-                                <option value="Workout">Workout</option>
-                                <option value="Hiking">Hiking</option>
+                                <option
+                                        th:each="type : ${types}"
+                                        th:value="${type}"
+                                        th:text="${type}"
+                                        th:selected="${type == 'Running'}"
+                                ></option>
                             </select>
                             <label for="type">Type</label>
                             <div
@@ -282,6 +303,7 @@
                           rows="3"
                           style="height: 100px"
                           th:field="*{description}"
+                          value="Write Description here"
                           required
                           autofocus
                           minlength="3"

@@ -74,7 +74,7 @@
                         <td th:text="${product.type}">
                         <td th:text="${product.suitableFor}"></td>
                         <td>
-                            <a th:href="@{{id}(id=${product.id})}">view</a>
+                            <a th:href="@{view/{id}(id=${product.id})}">view</a>
                         </td>
                     </tr>
                     </tbody>
