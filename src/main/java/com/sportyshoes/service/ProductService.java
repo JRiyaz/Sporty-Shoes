@@ -1,9 +1,7 @@
 package com.sportyshoes.service;
 
 import com.sportyshoes.entity.ProductEntity;
-import com.sportyshoes.entity.UserEntity;
 import com.sportyshoes.repository.ProductRepository;
-import com.sportyshoes.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +26,38 @@ public class ProductService {
 
     public Optional<ProductEntity> findById(Integer userId) {
         return repository.findById(userId);
+    }
+
+    public List<ProductEntity> findByType(String type) {
+        return repository.findByType(type);
+    }
+
+    public List<ProductEntity> findByBrand(String brand) {
+        return repository.findByBrand(brand);
+    }
+
+    public List<ProductEntity> findAllBySuitableFor(String suitableFor) {
+        return repository.findAllBySuitableFor(suitableFor);
+    }
+
+    public ProductEntity findByIdAndSuitableFor(String suitableFor, Integer id) {
+        return repository.findByIdAndSuitableFor(suitableFor, id);
+    }
+
+    public ProductEntity findByIdAndType(String type, Integer id) {
+        return repository.findByIdAndType(type, id);
+    }
+
+    public ProductEntity findByIdAndBrand(String brand, Integer id) {
+        return repository.findByIdAndBrand(brand, id);
+    }
+
+    public List<ProductEntity> findAllBySuitableForAndType(String suitableFor, String type) {
+        return repository.findAllBySuitableForAndType(suitableFor, type);
+    }
+
+    public ProductEntity findByIdAndSuitableForAndType(String suitableFor, String type, Integer id) {
+        return repository.findByIdAndSuitableForAndType(suitableFor, type, id);
     }
 
     public List<ProductEntity> saveAll(List products) {
