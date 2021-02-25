@@ -68,7 +68,7 @@ public class ProductEntity implements Serializable {
     private String description;
 
     @Lob
-    @Column
+    @Column(length = Integer.MAX_VALUE)
     @NotEmpty(message = "Please select product image")
     private byte[] image;
 
