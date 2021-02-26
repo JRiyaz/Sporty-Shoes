@@ -13,6 +13,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Base64;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -71,10 +72,16 @@ public class ProductEntity implements Serializable {
     @NotEmpty(message = "Please select product image")
     private byte[] image;
 
+    //    @ManyToOne(cascade = CascadeType.ALL, targetEntity = OrderEntity.class, fetch = FetchType.LAZY)
+    //    @JoinColumn(name = "order_id")
     @ToString.Exclude
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = OrderEntity.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private OrderEntity orderEntity;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = OrderEntity.class)
+    @JoinTable(
+            name = "orders_products",
+            joinColumns = {@JoinColumn(name = "product_id")},
+            inverseJoinColumns = {@JoinColumn(name = "order_id")}
+    )
+    private List<OrderEntity> orderEntities;
 
     public ProductEntity(String name,
                          String styleName,

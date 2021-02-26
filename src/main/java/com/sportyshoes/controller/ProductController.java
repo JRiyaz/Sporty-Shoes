@@ -188,8 +188,12 @@ public class ProductController {
         final OrderEntity orderEntity = new OrderEntity(productEntity.getPrice(), true, products, userService.findById(1).get());
         orderService.save(orderEntity);
 
+        List<OrderEntity> orders = new ArrayList<>();
+        orders.add(orderEntity);
+        orders.addAll(productEntity.getOrderEntities());
+
         productEntity.setId(id);
-        productEntity.setOrderEntity(orderEntity);
+        productEntity.setOrderEntities(orders);
         Integer sold = productEntity.getSold();
         if (sold == null || sold.equals(""))
             sold = 0;
