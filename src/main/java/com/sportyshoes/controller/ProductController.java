@@ -2,8 +2,10 @@ package com.sportyshoes.controller;
 
 import com.sportyshoes.entity.OrderEntity;
 import com.sportyshoes.entity.ProductEntity;
+import com.sportyshoes.entity.UserEntity;
 import com.sportyshoes.service.OrderService;
 import com.sportyshoes.service.ProductService;
+import com.sportyshoes.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,7 @@ public class ProductController {
 
     private final ProductService productService;
     private final OrderService orderService;
+    private final UserService userService;
 
     @GetMapping("all")
     public String findAll(Model model) {
@@ -107,8 +110,6 @@ public class ProductController {
                                            @PathVariable Integer id,
                                            Model model) {
 
-        System.out.println("Second one ");
-
         suitableFor = StringUtils.capitalize(suitableFor);
         type = StringUtils.capitalize(type);
 
@@ -180,7 +181,7 @@ public class ProductController {
     public String buyShoes(@PathVariable Integer id, HttpServletRequest request) throws InterruptedException {
 
         final ProductEntity productEntity = productService.findById(id).get();
-        final OrderEntity orderEntity = new OrderEntity(productEntity.getPrice(), true, Arrays.asList(productEntity), null);
+        final OrderEntity orderEntity = new OrderEntity(productEntity.getPrice(), true, Arrays.asList(productEntity), userService.findById(1).get());
         orderService.save(orderEntity);
         final String uri = request.getHeader("Referer");
 

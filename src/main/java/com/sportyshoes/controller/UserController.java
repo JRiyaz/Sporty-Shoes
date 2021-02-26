@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,6 +26,15 @@ public class UserController {
 
         model.addAttribute("users", userService.findAll());
         return "all-users";
+    }
+
+    @GetMapping("view/{id}")
+    public String viewUser(@PathVariable Integer id, Model model) {
+
+        final UserEntity userEntity = userService.findById(id).get();
+
+        model.addAttribute("user", userEntity);
+        return "user-details";
     }
 
     @GetMapping("sign-up")
