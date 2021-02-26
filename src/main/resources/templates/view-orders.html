@@ -47,7 +47,7 @@
                     <tbody>
                     <tr th:each="order : ${orders}">
                         <td th:text="${order.id}"></td>
-                        <td th:text="${order.userEntity}"></td>
+                        <td th:text="${order.userEntity.name}"></td>
                         <td th:text="${order.billAmount}"></td>
                         <td th:text="${order.billPaid}"></td>
                         <td>

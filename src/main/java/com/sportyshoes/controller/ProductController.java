@@ -1,6 +1,8 @@
 package com.sportyshoes.controller;
 
+import com.sportyshoes.entity.OrderEntity;
 import com.sportyshoes.entity.ProductEntity;
+import com.sportyshoes.service.OrderService;
 import com.sportyshoes.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.util.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -22,6 +26,7 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+    private final OrderService orderService;
 
     @GetMapping("all")
     public String findAll(Model model) {
@@ -76,10 +81,12 @@ public class ProductController {
         return "redirect:/product/all?delete-product=true";
     }
 
-    @GetMapping("view/{suitableFor}/{id}")
+   /* @GetMapping("view/{suitableFor}/{id}")
     public String viewSuitableShoes(@PathVariable String suitableFor, @PathVariable Integer id, Model model) {
 
         suitableFor = StringUtils.capitalize(suitableFor);
+
+        System.out.println("First one called");
 
         ProductEntity product = new ProductEntity();
 
@@ -92,13 +99,15 @@ public class ProductController {
         model.addAttribute("id", id);
 
         return "buy-product";
-    }
+    }*/
 
     @GetMapping("view/{suitableFor}/{type}/{id}")
     public String viewSuitableAndTypeShoes(@PathVariable String suitableFor,
                                            @PathVariable String type,
                                            @PathVariable Integer id,
                                            Model model) {
+
+        System.out.println("Second one ");
 
         suitableFor = StringUtils.capitalize(suitableFor);
         type = StringUtils.capitalize(type);
@@ -147,14 +156,16 @@ public class ProductController {
         suitableFor = StringUtils.capitalize(suitableFor);
         type = StringUtils.capitalize(type);
 
-        String heading = type + suitableFor + " Shoes";
+        String heading = suitableFor + " " + type + " Shoes";
         String title = heading + " | Sporty Shoes";
 
         List<ProductEntity> productEntities = new ArrayList<>();
 
-        if (suitableFor.equalsIgnoreCase("brand"))
+        if (suitableFor.equalsIgnoreCase("brand")) {
             productEntities = productService.findByBrand(type);
-        else
+            heading = type + " Shoes";
+            title = heading + " | Sporty Shoes";
+        } else
             productEntities = productService.findAllBySuitableForAndType(suitableFor, type);
 
         model.addAttribute("suitableFor", suitableFor);
@@ -163,5 +174,16 @@ public class ProductController {
         model.addAttribute("products", productEntities);
 
         return "all-products";
+    }
+
+    @GetMapping("/buy/{id}")
+    public String buyShoes(@PathVariable Integer id, HttpServletRequest request) throws InterruptedException {
+
+        final ProductEntity productEntity = productService.findById(id).get();
+        final OrderEntity orderEntity = new OrderEntity(productEntity.getPrice(), true, Arrays.asList(productEntity), null);
+        orderService.save(orderEntity);
+        final String uri = request.getHeader("Referer");
+
+        return "redirect:" + uri + "?order=true";
     }
 }

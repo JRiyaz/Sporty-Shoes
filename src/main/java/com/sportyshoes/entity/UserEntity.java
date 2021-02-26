@@ -4,9 +4,9 @@ import com.sportyshoes.model.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -34,7 +34,6 @@ public class UserEntity implements Serializable {
     @Column(nullable = false, length = 100, unique = true, name = "email")
     @Email(message = "{user.email.invalid}")
     @NotEmpty(message = "Please enter email")
-    @UniqueElements(message = "Email ID already exists")
     private String email;
 
     @NotEmpty(message = "Please select your Gender")
@@ -68,6 +67,7 @@ public class UserEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
+    @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, targetEntity = OrderEntity.class, fetch = FetchType.LAZY, mappedBy = "userEntity")
     private List<OrderEntity> orderEntities;
 

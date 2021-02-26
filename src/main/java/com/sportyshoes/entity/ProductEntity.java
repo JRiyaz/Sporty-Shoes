@@ -3,6 +3,7 @@ package com.sportyshoes.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -57,10 +58,6 @@ public class ProductEntity implements Serializable {
     @NotEmpty(message = "Please enter product type")
     private String type;
 
-//    @Size(min = 3, max = 30, message = "Product material must be min 3 and max 30 characters}")
-//    @NotEmpty(message = "Please enter product material")
-//    private String material;
-
     @Min(value = 100, message = "Price must be min 100")
     private Double price;
 
@@ -74,6 +71,7 @@ public class ProductEntity implements Serializable {
     @NotEmpty(message = "Please select product image")
     private byte[] image;
 
+    @ToString.Exclude
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = OrderEntity.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private OrderEntity orderEntity;

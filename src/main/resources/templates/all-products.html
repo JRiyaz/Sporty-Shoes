@@ -36,7 +36,7 @@
 <!--            Main Content starts-->
 
             <div class="row mx-auto justify-content-center">
-                <h6 class="lead text-center m-4" th:if="${#lists.isEmpty(products)}">Store is empty!</h6>
+                <h6 class="lead text-center m-4 display-4" th:if="${#lists.isEmpty(products)}" th:text="${'Oops! ' + heading + ' are out of stock.'}"></h6>
                 <div class="card m-2" style="width: 15rem" th:unless="${#lists.isEmpty(products)}"  th:each="product : ${products}">
                     <img
                             th:src="@{'data:image/png;base64,' + ${product.bytesToImageConverter(product.image)}}"
@@ -51,7 +51,8 @@
                         <div class="text-muted">Brand: &nbsp;<strong th:text="${product.brand}">Puma</strong></div>
                         <div class="text-muted">Price: &nbsp;<strong th:text="${product.price}">₹500</strong></div>
                         </p>
-                        <a th:href="@{{id}(id = ${product.id})}" class="btn btn-primary btn-block">view</a>
+                        <a th:href="@{/product/view/{suitableFor}/{type}/{id}(suitableFor = ${product.suitableFor}, type = ${product.type}, id = ${product.id})}"
+                           class="btn btn-primary btn-block">view</a>
                     </div>
                 </div>
             </div>
