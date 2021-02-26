@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -24,5 +25,13 @@ public class OrderController {
 
         model.addAttribute("orders", orders);
         return "view-orders";
+    }
+
+    @GetMapping("view/{id}")
+    public String viewOrder(@PathVariable Integer id, Model model) {
+
+        final OrderEntity orderEntity = orderService.findById(id).get();
+        model.addAttribute("order", orderEntity);
+        return "order-details";
     }
 }

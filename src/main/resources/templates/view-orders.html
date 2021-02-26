@@ -51,7 +51,7 @@
                         <td th:text="${order.billAmount}"></td>
                         <td th:text="${order.billPaid}"></td>
                         <td>
-                            <a th:href="@{{id}(id=${order.id})}">view</a>
+                            <a th:href="@{/order/view/{id}(id=${order.id})}">view</a>
                         </td>
                     </tr>
                     </tbody>

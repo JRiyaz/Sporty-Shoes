@@ -46,8 +46,9 @@
                         <div class="card-body">
                             <h5 class="card-title" th:text="${product.name}">Card title</h5>
                             <a th:href="@{/product/buy/{id}(id = ${product.id})}" class="btn btn-success btn-block text-uppercase"
-                            >Buy This</a
-                            >
+                               th:classappend="${product.stock == null || product.stock < 1} ? disabled : ''"
+                            >Buy This
+                            </a>
                         </div>
                     </div>
 
@@ -67,10 +68,9 @@
                             </button>
                             Rating
                         </div>
-                        <blockquote class="blockquote my-3 text-capitalize">
-                            Only
-                            <p class="mb-0 d-inline" th:text="${product.stock}"> 5 </p>
-                            pieces are available.
+                        <blockquote class="blockquote my-3">
+                            <p class="mb-0 text-success" th:if="${product.stock > 0}" th:text="${'Only ' + product.stock + ' pieces are available'}"> 5 </p>
+                            <p class="mb-0 text-danger" th:if="${product.stock == null || product.stock < 1}"> Out of Stock </p>
                         </blockquote>
                     </div>
                 </div>

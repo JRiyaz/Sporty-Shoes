@@ -44,7 +44,7 @@ public class ProductEntity implements Serializable {
     @NotEmpty(message = "Please enter product color")
     private String color;
 
-    @Min(value = 1, message = "Stock must be min 1")
+    //    @Min(value = 1, message = "Stock must be min 1")
     private Integer stock;
 
     private Integer sold;

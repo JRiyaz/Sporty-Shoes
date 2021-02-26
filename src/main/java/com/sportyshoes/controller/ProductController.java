@@ -2,7 +2,6 @@ package com.sportyshoes.controller;
 
 import com.sportyshoes.entity.OrderEntity;
 import com.sportyshoes.entity.ProductEntity;
-import com.sportyshoes.entity.UserEntity;
 import com.sportyshoes.service.OrderService;
 import com.sportyshoes.service.ProductService;
 import com.sportyshoes.service.UserService;
@@ -19,7 +18,6 @@ import org.thymeleaf.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -181,8 +179,27 @@ public class ProductController {
     public String buyShoes(@PathVariable Integer id, HttpServletRequest request) throws InterruptedException {
 
         final ProductEntity productEntity = productService.findById(id).get();
-        final OrderEntity orderEntity = new OrderEntity(productEntity.getPrice(), true, Arrays.asList(productEntity), userService.findById(1).get());
+
+//        If we save the list as Arrays.asList(productEntity); we get error,
+//        because the list with Arrays.asList() is unmodified so we have to use the below approach
+        List<ProductEntity> products = new ArrayList<>();
+        products.add(productEntity);
+
+        final OrderEntity orderEntity = new OrderEntity(productEntity.getPrice(), true, products, userService.findById(1).get());
         orderService.save(orderEntity);
+
+        productEntity.setId(id);
+        productEntity.setOrderEntity(orderEntity);
+        Integer sold = productEntity.getSold();
+        if (sold == null || sold.equals(""))
+            sold = 0;
+        productEntity.setSold(sold + 1);
+        Integer stock = productEntity.getStock();
+
+        if (stock == null || stock.equals(""))
+            stock = 1;
+        productEntity.setStock(stock - 1);
+        productService.save(productEntity);
         final String uri = request.getHeader("Referer");
 
         return "redirect:" + uri + "?order=true";
