@@ -63,7 +63,7 @@
                         <td>
                             <img
                                     style="width: inherit; height: 120px"
-                                    th:src="@{'data:image/png;base64,' + ${product.bytesToImageConverter(product.image)}}"
+                                    th:src="@{'data:image/jpeg;base64,' + ${product.bytesToImageConverter(product.image)}}"
                                     th:alt="${product.name}"
                                     class="card-img-top img-fluid"
                             />

@@ -10,13 +10,13 @@
     />
 
     <!-- Custom styles for this template -->
-    <link th:href="@{/assets/bootstrap/css/dashboard.css}" rel="stylesheet" />
+    <link th:href="@{/assets/bootstrap/css/dashboard.css}" rel="stylesheet"/>
 
     <!--    File Upload style-->
-    <link rel="stylesheet" th:href="@{/css/file-upload.css}" />
+    <link rel="stylesheet" th:href="@{/css/file-upload.css}"/>
 
     <!--Custom Style-->
-    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body>
 <!--Nav-Bar Starts-->
@@ -46,10 +46,10 @@
             >
                 <form
                         th:action="@{/product/add}"
-                        th:object="${productEntity}"
                         method="POST"
                         class="needs-validation form-signin"
                         novalidate
+                        enctype="multipart/form-data"
                 >
                     <div
                             class="row justify-content-between align-items-center mx-sm-2 mb-3"
@@ -69,18 +69,12 @@
                             </div>
                             <input
                                     id="mediaFile"
-                                    th:field="*{image}"
+                                    name="image"
                                     required
                                     autofocus
                                     type="file"
+                                    accept="image/png, image/jpeg"
                             />
-                            <div
-                                    th:if="${#fields.hasErrors('image')}"
-                                    th:errors="*{image}"
-                                    class="is-invalid text-center"
-                            >
-                                Please provide your Name.
-                            </div>
                         </div>
                         <!-- File Upload Ends -->
 
@@ -91,19 +85,12 @@
                                         class="form-control"
                                         placeholder="shoe12"
                                         id="product-name"
-                                        th:field="*{name}"
+                                        name="name"
                                         required
                                         autofocus
                                         minlength="3"
                                 />
                                 <label for="product-name">Product Name</label>
-                                <div
-                                        th:if="${#fields.hasErrors('name')}"
-                                        th:errors="*{name}"
-                                        class="is-invalid"
-                                >
-                                    Please provide your Name.
-                                </div>
                             </div>
 
                             <div class="form-floating mb-2">
@@ -112,7 +99,7 @@
                                         class="form-control"
                                         placeholder="style123"
                                         id="style-name"
-                                        th:field="*{styleName}"
+                                        name="styleName"
                                         required
                                         autofocus
                                         minlength="3"
@@ -127,14 +114,6 @@
                                             th:selected="${style == 'cricket-126'}"
                                     ></option>
                                 </datalist>
-
-                                <div
-                                        th:if="${#fields.hasErrors('styleName')}"
-                                        th:errors="*{styleName}"
-                                        class="is-invalid"
-                                >
-                                    Please provide your Name.
-                                </div>
                             </div>
 
                             <div class="form-floating mb-2">
@@ -143,7 +122,7 @@
                                         class="form-control"
                                         placeholder="Adidas"
                                         id="brand"
-                                        th:field="*{brand}"
+                                        name="brand"
                                         required
                                         autofocus
                                         minlength="3"
@@ -158,13 +137,6 @@
                                     ></option>
                                 </datalist>
                                 <label for="brand">Brand</label>
-                                <div
-                                        th:if="${#fields.hasErrors('brand')}"
-                                        th:errors="*{brand}"
-                                        class="is-invalid"
-                                >
-                                    Please provide your Name.
-                                </div>
                             </div>
 
                             <div class="form-floating mb-2">
@@ -173,7 +145,7 @@
                                         class="form-control"
                                         placeholder="White and Black"
                                         id="color"
-                                        th:field="*{color}"
+                                        name="color"
                                         required
                                         autofocus
                                         minlength="3"
@@ -188,13 +160,6 @@
                                     ></option>
                                 </datalist>
                                 <label for="color">Color</label>
-                                <div
-                                        th:if="${#fields.hasErrors('color')}"
-                                        th:errors="*{color}"
-                                        class="is-invalid"
-                                >
-                                    Please provide your Name.
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -204,7 +169,7 @@
                             <select
                                     class="form-select"
                                     id="suitable-for"
-                                    th:field="*{suitableFor}"
+                                    name="suitableFor"
                                     required
                                     autofocus
                             >
@@ -216,20 +181,13 @@
                                 ></option>
                             </select>
                             <label for="suitable-for">Suitable For</label>
-                            <div
-                                    th:if="${#fields.hasErrors('suitableFor')}"
-                                    th:errors="*{suitableFor}"
-                                    class="is-invalid"
-                            >
-                                Please provide your Name.
-                            </div>
                         </div>
 
                         <div class="form-floating col-sm-12 col-lg-6 mb-2">
                             <select
                                     class="form-select"
                                     id="type"
-                                    th:field="*{type}"
+                                    name="type"
                                     required
                                     autofocus
                             >
@@ -241,13 +199,6 @@
                                 ></option>
                             </select>
                             <label for="type">Type</label>
-                            <div
-                                    th:if="${#fields.hasErrors('type')}"
-                                    th:errors="*{type}"
-                                    class="is-invalid"
-                            >
-                                Please provide your Name.
-                            </div>
                         </div>
                     </div>
 
@@ -258,19 +209,12 @@
                                     class="form-control"
                                     placeholder="5"
                                     id="pieces"
-                                    th:field="*{stock}"
+                                    name="stock"
                                     required
                                     autofocus
                                     min="1"
                             />
                             <label for="pieces">No.of Products</label>
-                            <div
-                                    th:if="${#fields.hasErrors('stock')}"
-                                    th:errors="*{stock}"
-                                    class="is-invalid"
-                            >
-                                Please provide your Name.
-                            </div>
                         </div>
 
                         <div class="col-sm-12 col-lg-6 form-floating mb-2">
@@ -279,45 +223,30 @@
                                     class="form-control"
                                     placeholder="1000.0"
                                     id="price"
-                                    th:field="*{price}"
+                                    name="price"
                                     required
                                     autofocus
                                     minlength="3"
                             />
                             <label for="price">Price</label>
-                            <div
-                                    th:if="${#fields.hasErrors('price')}"
-                                    th:errors="*{price}"
-                                    class="is-invalid"
-                            >
-                                Please provide your Name.
-                            </div>
                         </div>
                     </div>
 
                     <div class="row justify-content-between mx-sm-2 mb-3">
                         <div class="col-12 form-floating">
-                  <textarea
+                            <textarea
                           class="form-control"
                           id="observation"
                           rows="3"
                           style="height: 100px"
-                          th:field="*{description}"
+                          name="description"
                           value="Write Description here"
                           required
                           autofocus
                           minlength="3"
                   ></textarea>
                             <label class="observation" for="observation"
-                            >A few words about the product...</label
-                            >
-                            <div
-                                    th:if="${#fields.hasErrors('description')}"
-                                    th:errors="*{description}"
-                                    class="is-invalid"
-                            >
-                                Please provide your Name.
-                            </div>
+                            >A few words about the product...</label>
                         </div>
                     </div>
                     <div
@@ -356,6 +285,10 @@
       $(document).ready(function () {
         $("#example").DataTable();
       });
-    </script>
+
+
+
+
+</script>
 </body>
 </html>

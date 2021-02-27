@@ -13,6 +13,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,6 +26,8 @@ import java.util.List;
 public class ProductEntity implements Serializable {
 
     @Id
+//    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
+//    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -67,10 +70,17 @@ public class ProductEntity implements Serializable {
     @Column(length = 1000)
     private String description;
 
+//    @Transient
+//    private String file;
+
     @Lob
     @Column(length = Integer.MAX_VALUE)
-    @NotEmpty(message = "Please select product image")
+//    @NotEmpty(message = "Please select product image")
     private byte[] image;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "create_date")
+    private Date createDate = new Date();
 
     //    @ManyToOne(cascade = CascadeType.ALL, targetEntity = OrderEntity.class, fetch = FetchType.LAZY)
     //    @JoinColumn(name = "order_id")
@@ -92,7 +102,8 @@ public class ProductEntity implements Serializable {
                          String type,
                          Double price,
                          String description,
-                         byte[] image) {
+                         byte[] image,
+                         Date createDate) {
         this.name = name;
         this.styleName = styleName;
         this.brand = brand;
@@ -104,10 +115,81 @@ public class ProductEntity implements Serializable {
         this.price = price;
         this.description = description;
         this.image = image;
+        this.createDate = createDate;
     }
 
     public static String bytesToImageConverter(byte[] imageInBytes) {
 
         return imageInBytes != null && imageInBytes.length > 0 ? Base64.getEncoder().encodeToString(imageInBytes) : "";
+    }
+
+    public ProductEntity setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public ProductEntity setStyleName(String styleName) {
+        this.styleName = styleName;
+        return this;
+    }
+
+    public ProductEntity setBrand(String brand) {
+        this.brand = brand;
+        return this;
+    }
+
+    public ProductEntity setColor(String color) {
+        this.color = color;
+        return this;
+    }
+
+    public ProductEntity setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public ProductEntity setStock(Integer stock) {
+        this.stock = stock;
+        return this;
+    }
+
+    public ProductEntity setSold(Integer sold) {
+        this.sold = sold;
+        return this;
+    }
+
+    public ProductEntity setSuitableFor(String suitableFor) {
+        this.suitableFor = suitableFor;
+        return this;
+    }
+
+    public ProductEntity setType(String type) {
+        this.type = type;
+        return this;
+    }
+
+    public ProductEntity setPrice(Double price) {
+        this.price = price;
+        return this;
+    }
+
+    public ProductEntity setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public ProductEntity setImage(byte[] image) {
+        this.image = image;
+        return this;
+    }
+
+    public ProductEntity setCreateDate(Date createDate) {
+        this.createDate = createDate;
+        return this;
+    }
+
+    public ProductEntity setOrderEntities(List<OrderEntity> orderEntities) {
+        this.orderEntities = orderEntities;
+        return this;
     }
 }

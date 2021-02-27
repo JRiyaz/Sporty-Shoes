@@ -8,16 +8,14 @@ import com.sportyshoes.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.thymeleaf.util.StringUtils;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -38,17 +36,29 @@ public class ProductController {
         return "view-stock";
     }
 
+    //    public String addStock(ProductEntity productEntity) {
     @GetMapping("add")
     public String addStock(ProductEntity productEntity) {
 
         return "add-stock";
     }
 
+    //    public String addStock(@ModelAttribute("productEntity") @Valid ProductEntity productEntity, @RequestParam("file") MultipartFile image, BindingResult bindingResult) throws IOException {
+    //    public String addStock(@Valid ProductEntity productEntity, BindingResult bindingResult) {
     @PostMapping("add")
-    public String addStock(@Valid ProductEntity productEntity, BindingResult bindingResult) {
+    public String addStock(@RequestParam MultipartFile image,
+                           @RequestParam String name,
+                           @RequestParam String styleName,
+                           @RequestParam String brand,
+                           @RequestParam String color,
+                           @RequestParam Integer stock,
+                           @RequestParam String suitableFor,
+                           @RequestParam String type,
+                           @RequestParam Double price,
+                           @RequestParam String description) throws IOException {
 
-        if (bindingResult.hasErrors())
-            return "add-stock";
+        ProductEntity productEntity = new ProductEntity(name, styleName, brand, color, stock + 0, 0,
+                suitableFor, type, price, description, image.getBytes(), new Date());
 
         productService.save(productEntity);
         return "redirect:all?add-product=true";
@@ -65,12 +75,37 @@ public class ProductController {
     }
 
     @PostMapping("update/{id}")
-    public String updateProduct(@PathVariable Integer id, @Valid ProductEntity product, BindingResult result) {
+    public String updateProduct(@PathVariable Integer id,
+                                @RequestParam MultipartFile image,
+                                @RequestParam String name,
+                                @RequestParam String styleName,
+                                @RequestParam String brand,
+                                @RequestParam String color,
+                                @RequestParam Integer stock,
+                                @RequestParam Integer sold,
+                                @RequestParam String suitableFor,
+                                @RequestParam String type,
+                                @RequestParam Double price,
+                                @RequestParam String description) throws IOException {
 
-        if (result.hasErrors()) {
+        ProductEntity product = productService.findById(id).get();
+
+        product.setImage(image.getBytes())
+                .setName(name)
+                .setStyleName(styleName)
+                .setBrand(brand)
+                .setColor(color)
+                .setStock(stock)
+                .setSold(sold + 0)
+                .setSuitableFor(suitableFor)
+                .setType(type)
+                .setPrice(price)
+                .setDescription(description);
+
+//        if (result.hasErrors()) {
 //            product.setId(id);
-            return "view-product";
-        }
+//            return "view-product";
+//        }
 
         productService.save(product);
         return "redirect:/product/all?product-update=true";
@@ -192,17 +227,11 @@ public class ProductController {
         orders.add(orderEntity);
         orders.addAll(productEntity.getOrderEntities());
 
-        productEntity.setId(id);
-        productEntity.setOrderEntities(orders);
-        Integer sold = productEntity.getSold();
-        if (sold == null || sold.equals(""))
-            sold = 0;
-        productEntity.setSold(sold + 1);
-        Integer stock = productEntity.getStock();
+        productEntity.setId(id)
+                .setOrderEntities(orders)
+                .setSold(productEntity.getSold() + 1)
+                .setStock(productEntity.getStock() - 1);
 
-        if (stock == null || stock.equals(""))
-            stock = 1;
-        productEntity.setStock(stock - 1);
         productService.save(productEntity);
         final String uri = request.getHeader("Referer");
 
