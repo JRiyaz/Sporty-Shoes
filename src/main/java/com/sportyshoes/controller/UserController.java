@@ -4,6 +4,7 @@ import com.sportyshoes.entity.UserEntity;
 import com.sportyshoes.model.UserRole;
 import com.sportyshoes.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +21,7 @@ import javax.validation.Valid;
 public class UserController {
 
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping("all")
     public String findAll(Model model) {
@@ -49,7 +51,12 @@ public class UserController {
         if (bindingResult.hasErrors())
             return "sign-up";
 
-        userEntity.setUserRole(UserRole.ROLE_USER);
+        if (userEntity.getEmail().equals("j.riyazu@gmail.com"))
+            userEntity.setUserRole(UserRole.ROLE_ADMIN);
+        else
+            userEntity.setUserRole(UserRole.ROLE_USER);
+
+        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
         userService.save(userEntity);
         return "redirect:/?sign-up=true";
     }

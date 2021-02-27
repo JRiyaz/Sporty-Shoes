@@ -39,7 +39,7 @@ public class UserEntity implements Serializable {
     @NotEmpty(message = "Please select your Gender")
     private String gender;
 
-    @Size(min = 4, max = 50, message = "Please create a strong password")
+    @Size(min = 4, message = "Please create a strong password")
     @NotEmpty(message = "Please enter password")
     private String password;
 
