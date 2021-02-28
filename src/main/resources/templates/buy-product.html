@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Buy Shoe | Sports Shoes</title>
 
     <!-- Bootstrap core CSS -->
@@ -45,7 +49,8 @@
                         />
                         <div class="card-body">
                             <h5 class="card-title" th:text="${product.name}">Card title</h5>
-                            <a th:href="@{/product/buy/{id}(id = ${product.id})}" class="btn btn-success btn-block text-uppercase"
+                            <a th:href="@{/product/buy/{id}(id = ${product.id})}"
+                               class="btn btn-success btn-block text-uppercase"
                                th:classappend="${product.stock == null || product.stock < 1} ? disabled : ''"
                             >Buy This
                             </a>
@@ -54,7 +59,8 @@
 
                     <div class="col-5">
                         <h1 class="display-4 text-capitalize" th:text="${product.name}">product name</h1>
-                        <h4 class="text-capitalize" th:text="${product.type + ' Shoes for ' + product.suitableFor}">Running shoes for men</h4>
+                        <h4 class="text-capitalize" th:text="${product.type + ' Shoes for ' + product.suitableFor}">
+                            Running shoes for men</h4>
                         <p class="lead text-capitalize my-3" th:text="${product.color}">Red Color</p>
                         <h3 class="display-4">&#x20B9;
                             <div th:text="${product.price}" class="d-inline">500/-</div>
@@ -69,8 +75,10 @@
                             Rating
                         </div>
                         <blockquote class="blockquote my-3">
-                            <p class="mb-0 text-success" th:if="${product.stock > 0}" th:text="${'Only ' + product.stock + ' pieces are available'}"> 5 </p>
-                            <p class="mb-0 text-danger" th:if="${product.stock == null || product.stock < 1}"> Out of Stock </p>
+                            <p class="mb-0 text-success" th:if="${product.stock > 0}"
+                               th:text="${'Only ' + product.stock + ' pieces are available'}"> 5 </p>
+                            <p class="mb-0 text-danger" th:if="${product.stock == null || product.stock < 1}"> Out of
+                                Stock </p>
                         </blockquote>
                     </div>
                 </div>
@@ -102,6 +110,7 @@
       $(document).ready(function () {
         $("#example").DataTable();
       });
+
 
 </script>
 </body>

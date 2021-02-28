@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title th:text="${title}">${title} | Sports Shoes</title>
 
     <!-- Bootstrap core CSS -->
@@ -33,11 +37,13 @@
                 <h1 class="h2" th:text="${heading}">Shoes</h1>
             </div>
 
-<!--            Main Content starts-->
+            <!--            Main Content starts-->
 
             <div class="row mx-auto justify-content-center">
-                <h6 class="lead text-center m-4 display-4" th:if="${#lists.isEmpty(products)}" th:text="${'Oops! ' + heading + ' are out of stock.'}"></h6>
-                <div class="card m-2" style="width: 15rem" th:unless="${#lists.isEmpty(products)}"  th:each="product : ${products}">
+                <h6 class="lead text-center m-4 display-4" th:if="${#lists.isEmpty(products)}"
+                    th:text="${'Oops! ' + heading + ' are out of stock.'}"></h6>
+                <div class="card m-2" style="width: 15rem" th:unless="${#lists.isEmpty(products)}"
+                     th:each="product : ${products}">
                     <img
                             th:src="@{'data:image/png;base64,' + ${product.bytesToImageConverter(product.image)}}"
                             class="card-img-top"
@@ -81,6 +87,8 @@
       $(document).ready(function () {
         $("#example").DataTable();
       });
+
+
 </script>
 </body>
 </html>

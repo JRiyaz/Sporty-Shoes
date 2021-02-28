@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>View Stock | Sports Shoes</title>
 
     <!-- Bootstrap core CSS -->
@@ -10,16 +14,16 @@
     />
 
     <!-- Custom styles for this template -->
-    <link th:href="@{/assets/bootstrap/css/dashboard.css}" rel="stylesheet" />
+    <link th:href="@{/assets/bootstrap/css/dashboard.css}" rel="stylesheet"/>
 
     <!-- Datatable core CSS -->
     <link rel="stylesheet" th:href="@{/webjars/datatables/1.10.23/css/jquery.dataTables.css}"/>
 
     <!--    File Upload style-->
-    <link rel="stylesheet" th:href="@{/css/file-upload.css}" />
+    <link rel="stylesheet" th:href="@{/css/file-upload.css}"/>
 
     <!--Custom Style-->
-    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body>
 <!--Nav-Bar Starts-->
@@ -121,6 +125,7 @@
       $(document).ready(function () {
         $("#example").DataTable();
       });
-    </script>
+
+</script>
 </body>
 </html>

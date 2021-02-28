@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Add Stock | Sports Shoes</title>
 
     <!-- Bootstrap core CSS -->
@@ -235,16 +239,16 @@
                     <div class="row justify-content-between mx-sm-2 mb-3">
                         <div class="col-12 form-floating">
                             <textarea
-                          class="form-control"
-                          id="observation"
-                          rows="3"
-                          style="height: 100px"
-                          name="description"
-                          value="Write Description here"
-                          required
-                          autofocus
-                          minlength="3"
-                  ></textarea>
+                                    class="form-control"
+                                    id="observation"
+                                    rows="3"
+                                    style="height: 100px"
+                                    name="description"
+                                    value="Write Description here"
+                                    required
+                                    autofocus
+                                    minlength="3"
+                            ></textarea>
                             <label class="observation" for="observation"
                             >A few words about the product...</label>
                         </div>
@@ -285,6 +289,7 @@
       $(document).ready(function () {
         $("#example").DataTable();
       });
+
 
 
 

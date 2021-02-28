@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html
-        lang="en"
-        xmlns:layout="http://www.w3.org/1999/xhtml"
-        xmlns:th="http://www.w3.org/1999/xhtml"
->
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">Header</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <!--    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">Header</title>-->
+    <title>Header</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -48,7 +48,7 @@
                 placeholder="Search"
                 aria-label="Search"
         />
-        <ul class="navbar-nav list-group-horizontal px-5">
+        <ul class="navbar-nav list-group-horizontal px-5 mx-4">
             <li class="nav-item">
                 <a class="nav-link m-2" href="/login">Sign In</a>
             </li>
