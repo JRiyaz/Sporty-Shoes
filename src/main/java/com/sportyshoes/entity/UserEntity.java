@@ -63,6 +63,14 @@ public class UserEntity implements Serializable {
     @AssertTrue
     private Boolean terms;
 
+    private Boolean isAccountNonExpired;
+
+    private Boolean isAccountNonLocked;
+
+    private Boolean isCredentialsNonExpired;
+
+    private Boolean isEnabled;
+
     @Column(name = "user_role", length = 50)
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
@@ -71,7 +79,9 @@ public class UserEntity implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, targetEntity = OrderEntity.class, fetch = FetchType.LAZY, mappedBy = "userEntity")
     private List<OrderEntity> orderEntities;
 
-    public UserEntity(String name, String email, String gender, String password, String address, String city, String state, String zipcode, Boolean terms, UserRole userRole) {
+    public UserEntity(String name, String email, String gender, String password, String address, String city,
+                      String state, String zipcode, Boolean terms, Boolean isCredentialsNonExpired,
+                      Boolean isAccountNonExpired, Boolean isAccountNonLocked, Boolean isEnabled, UserRole userRole) {
         this.name = name;
         this.email = email;
         this.gender = gender;
@@ -81,6 +91,10 @@ public class UserEntity implements Serializable {
         this.state = state;
         this.zipcode = zipcode;
         this.terms = terms;
+        this.isAccountNonExpired = isAccountNonExpired;
+        this.isAccountNonLocked = isAccountNonLocked;
+        this.isCredentialsNonExpired = isCredentialsNonExpired;
+        this.isEnabled = isEnabled;
         this.userRole = userRole;
     }
 }
