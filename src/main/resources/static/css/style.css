@@ -1,14 +1,14 @@
 .carousel-caption {
-  top: 24rem;
+  top: 34rem;
 }
 a.d-block > img {
   height: 50vh;
 }
 #carouselExampleCaptions {
-  max-height: 550px;
+  max-height: 640px;
 }
 .carousel-item > img {
-  height: 600px;
+  height: 640px;
 }
 .navbar-nav .dropdown-menu {
   position: absolute;
@@ -28,17 +28,12 @@ nav .nav-item {
 .btn-secondary {
   color: #f8f9fa;
   background-color: #343a40;
-  border: none;
-  outline: none;
-  /* border-color: #f8f9fa; */
 }
 .btn-secondary:hover,
 .btn-secondary:focus,
 .btn-secondary:active {
   color: #f8f9fa;
   background-color: #343a40;
-  border: none;
-  outline: none;
 }
 
 #form-section .form-floating {

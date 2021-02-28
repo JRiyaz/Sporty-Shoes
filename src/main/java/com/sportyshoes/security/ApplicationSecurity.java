@@ -28,11 +28,12 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin()
+                .loginPage("/login")
                 .permitAll()
                 .and()
                 .logout()
-                .logoutUrl("/user/logout")
-                .logoutSuccessUrl("/user/login?logout")
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/?logout=true")
                 .permitAll()
                 .clearAuthentication(true)
                 .deleteCookies("JSESSIONID", "remember-me")
@@ -47,7 +48,8 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .antMatchers("/", "/home", "/user/sign-up", "/css/*", "/js/*", "/img/*", "/assets/**",
-                        "/webjars/**", "/user/logout", "/product/view/**", "/product/view/***", "/product/all/**");
+                        "/webjars/**", "/product/view/**", "/product/view/***", "/product/all/**",
+                        "/user/sign-up");
     }
 
     @Override

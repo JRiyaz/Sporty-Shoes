@@ -11,5 +11,6 @@ public class BasicViewController implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/home").setViewName("index");
+        registry.addViewController("/login").setViewName("sign-in");
     }
 }
