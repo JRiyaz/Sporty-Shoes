@@ -49,7 +49,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
         web.ignoring()
                 .antMatchers("/", "/home", "/user/sign-up", "/css/*", "/js/*", "/img/*", "/assets/**",
                         "/webjars/**", "/product/view/**", "/product/view/***", "/product/all/**",
-                        "/user/sign-up");
+                        "/user/sign-up", "/error");
     }
 
     @Override
