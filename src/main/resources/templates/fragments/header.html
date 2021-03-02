@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -22,7 +23,7 @@
             th:fragment="nav"
             class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
     >
-        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/"
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 d-block text-center" href="/home"
         >Sporty Shoes</a
         >
         <ul class="navbar-nav list-group-horizontal">
@@ -38,7 +39,7 @@
             <li class="nav-item">
                 <a class="nav-link m-2" href="/product/all/brand">Brand</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
                 <a class="nav-link m-2" href="/user/all">Users</a>
             </li>
         </ul>
@@ -48,14 +49,22 @@
                 placeholder="Search"
                 aria-label="Search"
         />
+        <!--            th:classappend="${session?.user?.email} ? 'd-none' : 'd-block'"-->
+        <!--            th:if="${#authentication.getPrincipal().getUsername() eq null}"-->
+        <!--            th:unless="${#authentication?.getPrincipal()?.getUsername()}"-->
+        <!--            sec:authorize="isAnonymous()">-->
+        <!--            #strings.contains(#authentication.principal.authorities,'ROLE_ADMIN')-->
+        <!--            th:if="${#authorization.expression('isAuthenticated()')}"-->
+        <!--        ${#strings.equalsIgnoreCase(#httpServletRequest.requestURI, 'localhost:5555')}-->
+
         <ul class="navbar-nav list-group-horizontal px-5 mx-4">
-            <li class="nav-item">
+            <li class="nav-item" th:classappend="${session?.user?.email} ? 'd-none' : 'd-block'">
                 <a class="nav-link m-2" href="/login">Sign In</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link m-2" href="/user/sign-up">Sign Up</a>
+            <li class="nav-item" th:classappend="${session?.user?.email} ? 'd-none' : 'd-block'">
+                <a class="nav-link m-2 px-3 border rounded" href="/user/sign-up">Sign Up</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="isAuthenticated()">
                 <div class="dropdown">
                     <button
                             class="btn btn-secondary dropdown-toggle"
@@ -64,14 +73,15 @@
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
+                            sec:authentication="name"
                     >
                         User
                     </button>
                     <div
-                            class="dropdown-menu bg-dark"
+                            class="dropdown-menu bg-dark px-2"
                             aria-labelledby="dropdownMenuButton"
                     >
-                        <a class="dropdown-item text-white w-100 col-auto rounded border" href="/logout"
+                        <a class="dropdown-item text-white w-100 col-auto rounded border text-center" href="/logout"
                         >Sign-Out</a
                         >
                     </div>

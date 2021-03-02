@@ -7,6 +7,9 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 public class BeanSupplier {
@@ -33,8 +36,18 @@ public class BeanSupplier {
         return new BCryptPasswordEncoder(10);
     }
 
-//    @Bean
-//    public SpringSecurityDialect springSecurityDialect() {
-//        return new SpringSecurityDialect();
-//    }
+    @Bean
+    public SpringSecurityDialect springSecurityDialect() {
+        return new SpringSecurityDialect();
+    }
+
+
+    @Bean
+    public SpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
+        final SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(templateResolver);
+        templateEngine.addDialect(springSecurityDialect()); // Enable use of "sec"
+        return templateEngine;
+
+    }
 }

@@ -7,10 +7,12 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
+@EnableWebSecurity
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -29,6 +31,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/home")
                 .permitAll()
                 .and()
                 .logout()
@@ -47,9 +50,8 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers("/", "/home", "/user/sign-up", "/css/*", "/js/*", "/img/*", "/assets/**",
-                        "/webjars/**", "/product/view/**", "/product/view/***", "/product/all/**",
-                        "/user/sign-up", "/error");
+                .antMatchers("/", "/user/sign-up", "/css/*", "/js/*", "/img/*", "/assets/**",
+                        "/webjars/**", "/user/sign-up", "/error", "/product/view/**");
     }
 
     @Override

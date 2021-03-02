@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -46,23 +46,24 @@
                         <th>City</th>
                         <th>Role</th>
                         <th>View</th>
-<!--                        <th>Delete</th>-->
+                        <!--                        <th>Delete</th>-->
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="user : ${users}">
+                    <tr class="" th:each="user : ${users}"
+                        th:classappend="${user.email eq #authentication.getPrincipal().getUsername()} ? text-success : ''">
                         <td th:text="${user.name}"></td>
                         <td th:text="${user.email}"></td>
                         <td th:text="${user.gender}"></td>
                         <td th:text="${user.city}"></td>
                         <td th:text="${user.userRole}"></td>
                         <td>
-<!--                            <a th:href="@{/user/edit/{id}(id=${user.id})}">edit</a>-->
+                            <!--                            <a th:href="@{/user/edit/{id}(id=${user.id})}">edit</a>-->
                             <a th:href="@{/user/view/{id}(id=${user.id})}">view</a>
                         </td>
-<!--                        <td>-->
-<!--                            <a th:href="@{/user/delete/{id}(id=${user.id})}">delete</a>-->
-<!--                        </td>-->
+                        <!--                        <td>-->
+                        <!--                            <a th:href="@{/user/delete/{id}(id=${user.id})}">delete</a>-->
+                        <!--                        </td>-->
                     </tr>
                     </tbody>
                     <tfoot>
@@ -73,7 +74,7 @@
                         <th>City</th>
                         <th>Role</th>
                         <th>View</th>
-<!--                        <th>Delete</th>-->
+                        <!--                        <th>Delete</th>-->
                     </tr>
                     </tfoot>
                 </table>
@@ -102,6 +103,7 @@
       $(document).ready(function () {
         $("#example").DataTable();
       });
+
 </script>
 </body>
 </html>
