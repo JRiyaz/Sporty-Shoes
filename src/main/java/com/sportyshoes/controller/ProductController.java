@@ -6,6 +6,7 @@ import com.sportyshoes.service.OrderService;
 import com.sportyshoes.service.ProductService;
 import com.sportyshoes.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -28,6 +29,7 @@ public class ProductController {
     private final UserService userService;
 
     @GetMapping("all")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String findAll(Model model) {
 
         final List<ProductEntity> products = productService.findAll();
@@ -36,16 +38,16 @@ public class ProductController {
         return "view-stock";
     }
 
-    //    public String addStock(ProductEntity productEntity) {
     @GetMapping("add")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String addStock(ProductEntity productEntity) {
 
         return "add-stock";
     }
 
-    //    public String addStock(@ModelAttribute("productEntity") @Valid ProductEntity productEntity, @RequestParam("file") MultipartFile image, BindingResult bindingResult) throws IOException {
     //    public String addStock(@Valid ProductEntity productEntity, BindingResult bindingResult) {
     @PostMapping("add")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String addStock(@RequestParam MultipartFile image,
                            @RequestParam String name,
                            @RequestParam String styleName,
@@ -75,6 +77,7 @@ public class ProductController {
     }
 
     @PostMapping("update/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String updateProduct(@PathVariable Integer id,
                                 @RequestParam MultipartFile image,
                                 @RequestParam String name,
@@ -112,30 +115,11 @@ public class ProductController {
     }
 
     @GetMapping("delete/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteProduct(@PathVariable Integer id) {
         productService.deleteById(id);
         return "redirect:/product/all?delete-product=true";
     }
-
-   /* @GetMapping("view/{suitableFor}/{id}")
-    public String viewSuitableShoes(@PathVariable String suitableFor, @PathVariable Integer id, Model model) {
-
-        suitableFor = StringUtils.capitalize(suitableFor);
-
-        System.out.println("First one called");
-
-        ProductEntity product = new ProductEntity();
-
-        if (suitableFor.equalsIgnoreCase("brand"))
-            product = productService.findById(id).get();
-        else
-            product = productService.findByIdAndSuitableFor(suitableFor, id);
-
-        model.addAttribute("product", product);
-        model.addAttribute("id", id);
-
-        return "buy-product";
-    }*/
 
     @GetMapping("view/{suitableFor}/{type}/{id}")
     public String viewSuitableAndTypeShoes(@PathVariable String suitableFor,
@@ -211,6 +195,7 @@ public class ProductController {
     }
 
     @GetMapping("/buy/{id}")
+    @PreAuthorize("hasAuthority('READ')")
     public String buyShoes(@PathVariable Integer id, HttpServletRequest request) throws InterruptedException {
 
         final ProductEntity productEntity = productService.findById(id).get();

@@ -4,6 +4,7 @@ import com.sportyshoes.entity.UserEntity;
 import com.sportyshoes.model.UserRole;
 import com.sportyshoes.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,9 @@ public class UserController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
+    //    @RolesAllowed({"ROLE-USER, ROLE_ADMIN"})
     @GetMapping("all")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String findAll(Model model) {
 
         model.addAttribute("users", userService.findAll());
@@ -31,6 +34,7 @@ public class UserController {
     }
 
     @GetMapping("view/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String viewUser(@PathVariable Integer id, Model model) {
 
         final UserEntity userEntity = userService.findById(id).get();

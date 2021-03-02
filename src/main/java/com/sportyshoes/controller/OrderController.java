@@ -3,6 +3,7 @@ package com.sportyshoes.controller;
 import com.sportyshoes.entity.OrderEntity;
 import com.sportyshoes.service.OrderService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @GetMapping("all")
+    @PreAuthorize("hasAuthority('UPDATE')")
     public String findAll(Model model) {
 
         final List<OrderEntity> orders = orderService.findAll();
@@ -28,6 +30,7 @@ public class OrderController {
     }
 
     @GetMapping("view/{id}")
+    @PreAuthorize("hasAuthority('UPDATE')")
     public String viewOrder(@PathVariable Integer id, Model model) {
 
         final OrderEntity orderEntity = orderService.findById(id).get();
