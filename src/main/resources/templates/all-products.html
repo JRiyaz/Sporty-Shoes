@@ -49,7 +49,7 @@
                             th:src="@{'data:image/png;base64,' + ${product.bytesToImageConverter(product.image)}}"
                             class="card-img-top"
                             th:alt="${product.name}"
-                            style="min-height: 159px;"
+                            style="min-height: 180px; height: 180px;"
                     />
                     <div class="card-body">
                         <h5 class="card-title" th:text="${product.name}">Shoe Name</h5>

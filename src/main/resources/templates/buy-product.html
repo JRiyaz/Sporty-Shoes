@@ -45,7 +45,7 @@
                                 th:src="@{'data:image/png;base64,' + ${product.bytesToImageConverter(product.image)}}"
                                 class="card-img-top"
                                 th:alt="${product.name}"
-                                style="min-height: 250px"
+                                style="min-height: 380px; height: 380px"
                         />
                         <div class="card-body">
                             <h5 class="card-title" th:text="${product.name}">Card title</h5>
@@ -61,7 +61,7 @@
                         <h1 class="display-4 text-capitalize" th:text="${product.name}">product name</h1>
                         <h4 class="text-capitalize" th:text="${product.type + ' Shoes for ' + product.suitableFor}">
                             Running shoes for men</h4>
-                        <p class="lead text-capitalize my-3" th:text="${product.color}">Red Color</p>
+                        <p class="lead text-capitalize my-3" th:text="${product.color + ' Color'}">Red Color</p>
                         <h3 class="display-4">&#x20B9;
                             <div th:text="${product.price}" class="d-inline">500/-</div>
                         </h3>
