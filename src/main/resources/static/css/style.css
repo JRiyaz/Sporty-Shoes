@@ -1,3 +1,21 @@
+.toast {
+  top: 75px;
+  right: 23px;
+  z-index: 100;
+  background-color: #ffffff;
+  border: 3px solid !important;
+}
+
+.toast-header {
+  color: green;
+  background-color: #ffffff;
+  border-color: green;
+}
+
+.toast-header small,
+.toast-header button {
+  color: black !important;
+}
 .carousel-caption {
   top: 34rem;
 }
@@ -19,7 +37,7 @@ nav .nav-item {
 }
 .dropdown {
   position: relative;
-  top: 15%;
+  top: 0px;
 }
 .dropdown-menu .dropdown-item:hover {
   color: blue;
@@ -103,7 +121,11 @@ nav .nav-item {
   box-shadow: none !important;
 }
 .active {
-  color: #007bff !important;
+  color:  #ffffff !important;
+}
+
+.s-active {
+    color: #007bff !important;
 }
 
 .is-invalid {
