@@ -99,7 +99,7 @@
                         <th>All Orders</th>
                         <td>
                             <ul class="list-group">
-                                <li class="list-group-item border-0 py-3 px-0" th:each="order : ${user.orderEntities}">
+                                <li class="list-group-item border-0 py-2 px-0" th:each="order : ${user.orderEntities}">
                                     <a th:href="@{/order/view/{id}(id=${order.id})}"
                                        th:text="${'Order ' + order.id}"></a>
                                 </li>

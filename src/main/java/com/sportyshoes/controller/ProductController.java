@@ -2,6 +2,7 @@ package com.sportyshoes.controller;
 
 import com.sportyshoes.entity.OrderEntity;
 import com.sportyshoes.entity.ProductEntity;
+import com.sportyshoes.entity.UserEntity;
 import com.sportyshoes.service.OrderService;
 import com.sportyshoes.service.ProductService;
 import com.sportyshoes.service.UserService;
@@ -205,7 +206,11 @@ public class ProductController {
         List<ProductEntity> products = new ArrayList<>();
         products.add(productEntity);
 
-        final OrderEntity orderEntity = new OrderEntity(productEntity.getPrice(), true, products, userService.findById(1).get());
+        final String name = request.getUserPrincipal().getName();
+
+        UserEntity userEntity = userService.findByEmail(name).get();
+
+        final OrderEntity orderEntity = new OrderEntity(productEntity.getPrice(), true, products, userEntity);
         orderService.save(orderEntity);
 
         List<OrderEntity> orders = new ArrayList<>();

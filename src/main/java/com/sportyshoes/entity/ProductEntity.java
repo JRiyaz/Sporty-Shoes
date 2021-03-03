@@ -75,7 +75,7 @@ public class ProductEntity implements Serializable {
 
     @Lob
     @Column(length = Integer.MAX_VALUE)
-//    @NotEmpty(message = "Please select product image")
+    @Basic(fetch = FetchType.LAZY)
     private byte[] image;
 
     @Temporal(TemporalType.TIMESTAMP)

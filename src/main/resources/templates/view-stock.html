@@ -66,16 +66,16 @@
                         <td th:text="${product.name}"></td>
                         <td>
                             <img
-                                    style="width: inherit; height: 120px"
+                                    style="width: 160px; height: 120px;"
                                     th:src="@{'data:image/jpeg;base64,' + ${product.bytesToImageConverter(product.image)}}"
                                     th:alt="${product.name}"
-                                    class="card-img-top img-fluid"
+                                    class="card-img-top img-fluid border border-success"
                             />
                         </td>
                         <td th:text="${product.styleName}"></td>
                         <td th:text="${product.brand}"></td>
-                        <td th:text="${product.price}">
-                        <td th:text="${product.type}">
+                        <td th:text="${product.price}"></td>
+                        <td th:text="${product.type}"></td>
                         <td th:text="${product.suitableFor}"></td>
                         <td>
                             <a th:href="@{view/{id}(id=${product.id})}">view</a>
