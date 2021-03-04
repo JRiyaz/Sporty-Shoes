@@ -24,6 +24,7 @@ public class ProductService {
         return repository.save(product);
     }
 
+    @Transactional
     public Optional<ProductEntity> findById(Integer userId) {
         return repository.findById(userId);
     }
@@ -32,10 +33,12 @@ public class ProductService {
         return repository.findByType(type);
     }
 
+    @Transactional
     public List<ProductEntity> findByBrand(String brand) {
         return repository.findByBrand(brand);
     }
 
+    @Transactional
     public List<ProductEntity> findAllBySuitableFor(String suitableFor) {
         return repository.findAllBySuitableFor(suitableFor);
     }
@@ -48,14 +51,17 @@ public class ProductService {
         return repository.findByIdAndType(type, id);
     }
 
+    @Transactional
     public ProductEntity findByIdAndBrand(String brand, Integer id) {
         return repository.findByIdAndBrand(brand, id);
     }
 
+    @Transactional
     public List<ProductEntity> findAllBySuitableForAndType(String suitableFor, String type) {
         return repository.findAllBySuitableForAndType(suitableFor, type);
     }
 
+    @Transactional
     public ProductEntity findByIdAndSuitableForAndType(String suitableFor, String type, Integer id) {
         return repository.findByIdAndSuitableForAndType(suitableFor, type, id);
     }
@@ -64,6 +70,7 @@ public class ProductService {
         return repository.saveAll(products);
     }
 
+    @Transactional
     public void deleteById(Integer userId) {
         repository.deleteById(userId);
     }

@@ -16,6 +16,7 @@ public class OrderService {
 
     private final OrderRepository repository;
 
+    @Transactional
     public List<OrderEntity> findAll() {
         return repository.findAll();
     }
@@ -24,6 +25,7 @@ public class OrderService {
         return repository.save(order);
     }
 
+    @Transactional
     public Optional<OrderEntity> findById(Integer userId) {
         return repository.findById(userId);
     }

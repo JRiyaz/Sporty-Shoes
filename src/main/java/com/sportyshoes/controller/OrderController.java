@@ -1,7 +1,6 @@
 package com.sportyshoes.controller;
 
 import com.sportyshoes.entity.OrderEntity;
-import com.sportyshoes.entity.ProductEntity;
 import com.sportyshoes.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -35,9 +34,14 @@ public class OrderController {
     public String viewOrder(@PathVariable Integer id, Model model) {
 
         final OrderEntity orderEntity = orderService.findById(id).get();
-        final List<ProductEntity> products = orderEntity.getProducts();
+
+        /*
+        * final Map<Integer, String> details = orderEntity.getProducts()
+                .stream()
+                .collect(Collectors.toMap(ProductEntity::getId, ProductEntity::getName));
+        * */
         model.addAttribute("order", orderEntity);
-        model.addAttribute("products", products);
+//        model.addAttribute("products", orderEntity.getProducts());
         return "order-details";
     }
 }

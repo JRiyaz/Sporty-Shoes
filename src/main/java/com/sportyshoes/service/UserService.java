@@ -16,6 +16,7 @@ public class UserService {
 
     private final UserRepository repository;
 
+    @Transactional
     public List<UserEntity> findAll() {
         return repository.findAll();
     }
@@ -24,10 +25,12 @@ public class UserService {
         return repository.save(user);
     }
 
+    @Transactional
     public Optional<UserEntity> findById(Integer userId) {
         return repository.findById(userId);
     }
 
+    @Transactional
     public Optional<UserEntity> findByEmail(String email) {
         return repository.findByEmail(email);
     }

@@ -32,7 +32,7 @@ public class OrderEntity implements Serializable {
 
     //    @OneToMany(cascade = CascadeType.ALL, targetEntity = ProductEntity.class, fetch = FetchType.LAZY, mappedBy = "orderEntity")
     @ToString.Exclude
-    @ManyToMany(mappedBy = "orderEntities", cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = ProductEntity.class)
+    @ManyToMany(mappedBy = "orderEntities", cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = ProductEntity.class)
     private List<ProductEntity> products;
 
     @ToString.Exclude
