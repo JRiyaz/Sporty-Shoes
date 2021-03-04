@@ -356,10 +356,20 @@
 <!--Bootstrap JS dependency-->
 <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
 
+<!--Datatables JS dependency-->
+<script th:src="@{/webjars/datatables/1.10.23/js/jquery.dataTables.js}"></script>
+
 <!--File Upload JS dependency-->
 <script th:src="@{/js/file-upload.js}"></script>
 
 <!--Custom JS-->
 <script th:src="@{/js/script.js}"></script>
+
+<script>
+      $(document).ready(function () {
+        $("#example").DataTable();
+      });
+
+</script>
 </body>
 </html>

@@ -34,6 +34,21 @@ public class ModelData {
         return Arrays.asList("Adidas", "Nike", "Puma", "Reebok");
     }
 
+    @ModelAttribute("states")
+    public List<String> states() {
+        return Arrays.asList("AP", "Karnataka", "TamilNadu", "Kerala");
+    }
+
+    @ModelAttribute("statements")
+    public List<Boolean> statements() {
+        return Arrays.asList(true, false);
+    }
+
+    @ModelAttribute("roles")
+    public List<String> roles() {
+        return Arrays.asList("ROLE_USER", "ROLE_ADMIN");
+    }
+
     @ModelAttribute("types")
     public List<String> types() {
         return Arrays.asList("Running", "Hiking", "Workout");

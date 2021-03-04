@@ -37,6 +37,8 @@ $(document).ready(function () {
     toast("You have Logged Out Successful", "text-success", "border-success");
   else if (url.includes("?add-product=true"))
     toast("Product Added Successful", "text-success", "border-success");
+  else if (url.includes("?update-user=true"))
+    toast("User details updated Successful", "text-success", "border-success");
   else if (url.includes("?product-update=true"))
     toast("Product Updated Successful", "text-success", "border-success");
   else if (url.includes("?delete-product=true"))

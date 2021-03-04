@@ -45,6 +45,7 @@
                         <th>Gender</th>
                         <th>City</th>
                         <th>Role</th>
+                        <th>Edit</th>
                         <th>View</th>
                         <!--                        <th>Delete</th>-->
                     </tr>
@@ -58,7 +59,9 @@
                         <td th:text="${user.city}"></td>
                         <td th:text="${user.userRole}"></td>
                         <td>
-                            <!--                            <a th:href="@{/user/edit/{id}(id=${user.id})}">edit</a>-->
+                            <a th:href="@{/user/edit/{id}(id=${user.id})}">edit</a>
+                        </td>
+                        <td>
                             <a th:href="@{/user/view/{id}(id=${user.id})}">view</a>
                         </td>
                         <!--                        <td>-->
@@ -73,6 +76,7 @@
                         <th>Gender</th>
                         <th>City</th>
                         <th>Role</th>
+                        <th>Edit</th>
                         <th>View</th>
                         <!--                        <th>Delete</th>-->
                     </tr>
