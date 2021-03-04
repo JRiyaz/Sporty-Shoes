@@ -15,6 +15,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>Sporty-Shoes</name>
 
+    <packaging>war</packaging>
+
     <description>
         An e-Commerce site where users can shop for sporty shoes.
         Admin can login to manage the products in the store,
