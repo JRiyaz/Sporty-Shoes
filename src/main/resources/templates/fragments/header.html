@@ -50,32 +50,32 @@
         </div>
         <!-- Toast End -->
 
-        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 d-block text-center" href="/home"
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 d-block text-center" th:href="@{/home}"
         >Sporty Shoes</a
         >
         <ul class="navbar-nav list-group-horizontal">
             <li class="nav-item">
-                <a class="nav-link m-2" href="/product/all/men"
+                <a class="nav-link m-2" th:href="@{/product/all/men}"
                    th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/men')} ? 'active' : 'null'"
                 >Men</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link m-2" href="/product/all/women"
+                <a class="nav-link m-2" th:href="@{/product/all/women}"
                    th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/women')} ? 'active' : 'null'"
                 >Women</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link m-2" href="/product/all/kids"
+                <a class="nav-link m-2" th:href="@{/product/all/kids}"
                    th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/kids')} ? 'active' : 'null'"
                 >Kids</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link m-2" href="/product/all/brand"
+                <a class="nav-link m-2" th:href="@{/product/all/brand}"
                    th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/brand')} ? 'active' : 'null'"
                 >Brand</a>
             </li>
             <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
-                <a class="nav-link m-2" href="/user/all"
+                <a class="nav-link m-2" th:href="@{/user/all}"
                    th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/user/all')} ? 'active' : 'null'"
                 >Users</a>
             </li>
@@ -99,10 +99,10 @@
         <ul class="navbar-nav list-group-horizontal px-5 mx-4">
             <th:block th:unless="${#authentication?.getPrincipal()?.getUsername()}">
                 <li id="sign-in" class="nav-item">
-                    <a class="nav-link m-2" href="/login">Sign In</a>
+                    <a class="nav-link m-2" th:href="@{/login}">Sign In</a>
                 </li>
                 <li id="sign-up" class="nav-item">
-                    <a class="nav-link m-2 px-3 border rounded" href="/user/sign-up">Sign Up</a>
+                    <a class="nav-link m-2 px-3 border rounded" th:href="@{/user/sign-up}">Sign Up</a>
                 </li>
             </th:block>
             <li class="nav-item" sec:authorize="isAuthenticated()">
@@ -122,7 +122,7 @@
                             class="dropdown-menu bg-dark px-2"
                             aria-labelledby="dropdownMenuButton"
                     >
-                        <a class="dropdown-item text-white w-100 col-auto rounded border text-center" href="/logout"
+                        <a class="dropdown-item text-white w-100 col-auto rounded border text-center" th:href="@{/logout}"
                         >Sign-Out</a
                         >
                     </div>

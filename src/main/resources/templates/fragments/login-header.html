@@ -14,9 +14,9 @@
         <div class="inner">
             <h3 class="masthead-brand">Sporty Shoes</h3>
             <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link" href="/home">Home</a>
-                <a class="nav-link" href="/login" th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/login')} ? 'active' : 'null'">Sign In</a>
-                <a class="nav-link" href="/user/sign-up" th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/user/sign-up')} ? 'active' : 'null'">Sign Up</a>
+                <a class="nav-link" th:href="@{/home}">Home</a>
+                <a class="nav-link" th:href="@{/login}" th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/login')} ? 'active' : 'null'">Sign In</a>
+                <a class="nav-link" th:href="@{/user/sign-up}" th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/user/sign-up')} ? 'active' : 'null'">Sign Up</a>
             </nav>
         </div>
     </header>

@@ -56,16 +56,16 @@
                         </h6>
                         <ul id="admin-list" class="nav flex-column mx-4">
                             <li class="nav-item">
-                                <a id="all-users" class="nav-link" href="/user/all">All Users </a>
+                                <a id="all-users" class="nav-link" th:href="@{/user/all}">All Users </a>
                             </li>
                             <li class="nav-item">
-                                <a id="add-stock" class="nav-link" href="/product/add">Add Stock </a>
+                                <a id="add-stock" class="nav-link" th:href="@{/product/add}">Add Stock </a>
                             </li>
                             <li class="nav-item">
-                                <a id="view-orders" class="nav-link" href="/order/all">View Orders </a>
+                                <a id="view-orders" class="nav-link" th:href="@{/order/all}">View Orders </a>
                             </li>
                             <li class="nav-item">
-                                <a id="view-stock" class="nav-link" href="/product/all">View Stock </a>
+                                <a id="view-stock" class="nav-link" th:href="@{/product/all}">View Stock </a>
                             </li>
                         </ul>
                     </th:block>
@@ -104,22 +104,22 @@
                     </h6>
                     <ul id="men-list" class="nav flex-column mx-4">
                         <li class="nav-item">
-                            <a id="men-all" class="nav-link" href="/product/all/men"
+                            <a id="men-all" class="nav-link" th:href="@{/product/all/men}"
                             th:classappend="${#strings.endsWith(#httpServletRequest.requestURI, '/all/men')} ? 's-active' : ''"
                             >All </a>
                         </li>
                         <li class="nav-item">
-                            <a id="men-running" class="nav-link" href="/product/all/men/running"
+                            <a id="men-running" class="nav-link" th:href="@{/product/all/men/running}"
                             th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/men/running')} ? 's-active' : ''"
                             >Running </a>
                         </li>
                         <li class="nav-item">
-                            <a id="men-hiking" class="nav-link" href="/product/all/men/hiking"
+                            <a id="men-hiking" class="nav-link" th:href="@{/product/all/men/hiking}"
                             th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/men/hiking')} ? 's-active' : ''"
                             >Hiking </a>
                         </li>
                         <li class="nav-item">
-                            <a id="men-workout" class="nav-link" href="/product/all/men/workout"
+                            <a id="men-workout" class="nav-link" th:href="@{/product/all/men/workout}"
                             th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/men/workout')} ? 's-active' : ''"
                             >Workout </a>
                         </li>
@@ -156,22 +156,22 @@
                     </h6>
                     <ul id="women-list" class="nav flex-column mx-4">
                         <li class="nav-item">
-                            <a class="nav-link" href="/product/all/women"
+                            <a class="nav-link" th:href="@{/product/all/women}"
                             th:classappend="${#strings.endsWith(#httpServletRequest.requestURI, '/all/women')} ? 's-active' : ''"
                             >All </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/product/all/women/running"
+                            <a class="nav-link" th:href="@{/product/all/women/running}"
                             th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/women/running')} ? 's-active' : ''"
                             >Running </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/product/all/women/hiking"
+                            <a class="nav-link" th:href="@{/product/all/women/hiking}"
                             th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/women/hiking')} ? 's-active' : ''"
                             >Hiking </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/product/all/women/workout"
+                            <a class="nav-link" th:href="@{/product/all/women/workout}"
                             th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/women/workout')} ? 's-active' : ''"
                             >Workout </a>
                         </li>
@@ -208,7 +208,7 @@
                     </h6>
                     <ul id="kids-list" class="nav flex-column mx-4">
                         <li class="nav-item">
-                            <a class="nav-link" href="/product/all/kids"
+                            <a class="nav-link" th:href="@{/product/all/kids}"
                                th:classappend="${#strings.endsWith(#httpServletRequest.requestURI, '/all/kids')} ? 's-active' : ''"
                             >All </a>
                         </li>
@@ -245,27 +245,27 @@
                     </h6>
                     <ul id="brand-list" class="nav flex-column mx-4">
                         <li class="nav-item">
-                            <a class="nav-link" href="/product/all/brand"
+                            <a class="nav-link" th:href="@{/product/all/brand}"
                             th:classappend="${#strings.endsWith(#httpServletRequest.requestURI, '/all/brand')} ? 's-active' : ''"
                             >All </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/product/all/brand/adidas"
+                            <a class="nav-link" th:href="@{/product/all/brand/adidas}"
                             th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/all/brand/adidas')} ? 's-active' : ''"
                             >Adidas </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/product/all/brand/nike"
+                            <a class="nav-link" th:href="@{/product/all/brand/nike}"
                             th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/all/brand/nike')} ? 's-active' : ''"
                             >Nike </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/product/all/brand/puma"
+                            <a class="nav-link" th:href="@{/product/all/brand/puma}"
                             th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/all/brand/puma')} ? 's-active' : ''"
                             >Puma </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/product/all/brand/reebok"
+                            <a class="nav-link" th:href="@{/product/all/brand/reebok}"
                             th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/all/brand/reebok')} ? 's-active' : ''"
                             >Reebok </a>
                         </li>
